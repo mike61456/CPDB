@@ -3,62 +3,72 @@
 @{
     ViewBag.Title = "Delete";
 }
+    <style>
+        body {
+            background-color: #edfffe;
+            background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+            font-size: large;
+        }
+    </style>
+<h2>Delete products</h2>
 
-<h2>Delete</h2>
+<h3>Warning: Once you delete you cannot go back!</h3>
+<div class="jumbotron">
+    <div>
+        <h4>DetailProduct</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>DetailProduct</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OwnerId)
+                </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.OwnerId)
-        </dd>
+        </dl>
 
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
 </div>
+    

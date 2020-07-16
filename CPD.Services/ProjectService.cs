@@ -1,4 +1,5 @@
 ﻿using CPD.Data;
+using CPD.Models.Product;
 using CPD.Models.Project;
 using System;
 using System.Collections.Generic;
@@ -63,12 +64,23 @@ namespace CPD.Services
             }
             public DetailProject GetProjectById(int id)
             {
+                List<ListProduct> listOfProducts = new List<ListProduct>();
                 using (var ctx = new ApplicationDbContext())
                 {
                     var entity =
                         ctx
                             .Project
                             .Single(e => e.ProjectID == id && e.OwnerId == _userId);
+                foreach (var product in entity.Products)
+                {
+                    var productToAdd = new ListProduct()
+                    {
+                        Name = product.Name,
+                        Price = product.Price,
+                        ProductID = product.ProductID                  
+                    };
+                    listOfProducts.Add(productToAdd);
+                }
                     return
                         new DetailProject
                         {
@@ -78,7 +90,8 @@ namespace CPD.Services
                             ProjectCost = entity.ProjectCost,
                             ProjectID = entity.ProjectID,
                             OwnerId = entity.OwnerId,
-                            CustomerID = entity.CustomerID
+                            CustomerID = entity.CustomerID,
+                            Products = listOfProducts   
                         };
                 }
             }

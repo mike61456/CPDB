@@ -24,6 +24,12 @@ namespace CPD.MVC.Controllers
         }
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ProjectService(userId); //create a project service
+            var projects = service.GetProject();
+            ViewBag.ProjectID = new SelectList(projects, "ProjectID", "Name");
+            
+            // assign the return value of service.GetAllProjects to ViewBag.ProjectId
             return View();
         }
 
@@ -58,7 +64,7 @@ namespace CPD.MVC.Controllers
             var model =
                 new EditProduct
                 {
-                    ItemID = detail.ItemID,
+                    ProductID = detail.ProductID,
                     Name = detail.Name,
                     Price = detail.Price,
                     Description = detail.Description,
@@ -75,7 +81,7 @@ namespace CPD.MVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.ItemID != id)
+            if (model.ProductID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

@@ -12,7 +12,7 @@ namespace CPD.Models.Product
     {
         [Key]
         [Required]
-        public int ItemID { get; set; }
+        public int ProductID { get; set; }
 
         [Required]
         public string Name { get; set; }

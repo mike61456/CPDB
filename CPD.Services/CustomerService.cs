@@ -1,5 +1,6 @@
 ﻿using CPD.Data;
 using CPD.Models.Customer;
+using CPD.Models.Project;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,13 +63,27 @@ namespace CPD.Services
             }
             public DetailCustomer GetCustomerById(int id)
             {
+                List<ListProject> listOfProjects = new List<ListProject>();
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var entity =
+
+                var entity =
                         ctx
                             .Customer
                             .Single(e => e.CustomerID == id && e.OwnerId == _userId);
-                    return
+                foreach (var project in entity.Projects)
+                {
+                    var projectToAdd = new ListProject()
+                    {
+                        Name = project.Name,
+                        ProjectID = project.ProjectID,
+                        OwnerId = project.OwnerId,
+                        CustomerID = project.CustomerID,
+                        TypeOfProject = project.TypeOfProject
+                    };
+                    listOfProjects.Add(projectToAdd);
+                }
+                return
                         new DetailCustomer
                         {
                             CustomerID = entity.CustomerID,
@@ -77,7 +92,8 @@ namespace CPD.Services
                             Telephone = entity.Telephone,
                             Email = entity.Email,
                             Notes = entity.Notes,
-                            OwnerId = entity.OwnerId
+                            Projects = listOfProjects
+                          //  OwnerId = entity.OwnerId
                         };
                 }
             }
@@ -96,7 +112,7 @@ namespace CPD.Services
                     entity.Telephone = model.Telephone;
                     entity.Email = model.Email;
                     entity.Notes = model.Notes;
-                    entity.OwnerId = model.OwnerId;
+              //      entity.OwnerId = model.OwnerId;
 
                 return ctx.SaveChanges() == 1;
                 }

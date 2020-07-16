@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CPD.Models.Project;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,7 +25,9 @@ namespace CPD.Models.Customer
 
         public string Notes { get; set; }
 
-        [Required]
-        public Guid OwnerId { get; set; }
+        public List<ListProject> Projects { get; set; }
+
+
+
     }
 }

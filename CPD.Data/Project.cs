@@ -29,8 +29,10 @@ namespace CPD.Data
         [Required]
         public Guid OwnerId { get; set; }
         [Required]
+        [ForeignKey("Customer")]   //whatever property below this annotation is a FK of whatever Property Name you put into the ("here")
         public int CustomerID { get; set; }
+        public virtual Customer Customer { get; set; }
 
-        // public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+        public virtual ICollection<Product> Products { get; set; } = new List<Product>(); 
     }
 }

@@ -24,7 +24,7 @@ namespace CPD.Models.Customer
 
         public string Notes { get; set; }
 
-        [Required]
-        public Guid OwnerId { get; set; }
+        //[Required]
+        //public Guid OwnerId { get; set; }
     }
 }

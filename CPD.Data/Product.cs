@@ -12,7 +12,7 @@ namespace CPD.Data
     {
         [Key]
         [Required]
-        public int ItemID { get; set; }
+        public int ProductID { get; set; }
 
         [Required]
         
@@ -26,11 +26,10 @@ namespace CPD.Data
         [Required]
         public double Quantity { get; set; }
 
-       // [Required]
-      //  public Guid OwnerId { get; set; }
+        [ForeignKey("Project")]
+        public int ProjectID { get; set; }
+        public virtual Project Project { get; set; }
+
         
-
-
-        // public virtual ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

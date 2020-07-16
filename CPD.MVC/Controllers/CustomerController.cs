@@ -27,7 +27,7 @@ namespace CPD.MVC.Controllers
     {
         return View();
     }
-
+        //post http:get
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create(CreateCustomer model)
@@ -65,18 +65,18 @@ namespace CPD.MVC.Controllers
                 Telephone = detail.Telephone,
                 Email = detail.Email,
                 Notes = detail.Notes,
-                OwnerId = detail.OwnerId
+               // OwnerId = detail.OwnerId
             };
         return View(model);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, EditCustomer model)
+    public ActionResult Edit(EditCustomer model)
     {
         if (!ModelState.IsValid) return View(model);
 
-        if (model.CustomerID != id)
+        if (model.CustomerID != model.CustomerID)
         {
             ModelState.AddModelError("", "Id Mismatch");
             return View(model);

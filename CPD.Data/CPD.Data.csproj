@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202007150044393_first1.Designer.cs">
       <DependentUpon>202007150044393_first1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007151551565_newtables.cs" />
+    <Compile Include="Migrations\202007151551565_newtables.Designer.cs">
+      <DependentUpon>202007151551565_newtables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Project.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007150044393_first1.resx">
       <DependentUpon>202007150044393_first1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007151551565_newtables.resx">
+      <DependentUpon>202007151551565_newtables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

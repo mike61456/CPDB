@@ -12,6 +12,9 @@ namespace CPD.Models.Project
         [Required]
         public string Name { get; set; }
 
+        public string TypeOfProject { get; set; }
+
+
         [Key]
         [Required]
         public int ProjectID { get; set; }

@@ -12,18 +12,24 @@ namespace CPD.MVC.Controllers
     public class ProjectController : Controller
     {
         [Authorize]
-        // GET: Customer
+        // GET: Project
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ProjectService(userId);
             var model = service.GetProject();
-
+            // create a Customer service
+            // call your get all customers method, and assign it to ViewBag.CustomerId = customerService.GetCustomers();
 
             return View(model);
         }
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new CustomerService(userId); //create a project service
+            var customers = service.GetCustomer();
+            ViewBag.CustomerID = new SelectList(customers, "CustomerID", "Name");
+
             return View();
         }
 
@@ -32,7 +38,6 @@ namespace CPD.MVC.Controllers
         public ActionResult Create(CreateProject model)
         {
             if (!ModelState.IsValid) return View(model);
-
             var service = CreateProjectService();
 
             if (service.CreateProject(model))

@@ -12,7 +12,7 @@ namespace CPD.Models.Product
     {
         [Key]
         [Required]
-        public int ItemID { get; set; }
+        public int ProductID { get; set; }
 
         [Required]
         
@@ -25,9 +25,11 @@ namespace CPD.Models.Product
 
         [Required]
         public double Quantity { get; set; }
-        
 
-      //  [Required]
-      //  public Guid OwnerId { get; set; }
+        public int ProjectID { get; set; }
+
+
+        //  [Required]
+        //  public Guid OwnerId { get; set; }
     }
 }

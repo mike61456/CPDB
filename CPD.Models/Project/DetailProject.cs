@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CPD.Models.Product;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,5 +32,7 @@ namespace CPD.Models.Project
         public Guid OwnerId { get; set; }
         [Required]
         public int CustomerID { get; set; }
+        
+        public List<ListProduct> Products { get; set; } 
     }
 }
